@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inadimplência de crédito no Brasil, 2011–2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#F2F5F8;--surf:#fff;--ink:#14212B;--mut:#566673;--line:#D3DBE2;--tot:#1B6B8C;--pf:#C4402A;--hi:#E8EEF3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E161D;--surf:#15202A;--ink:#E7EEF3;--mut:#9AABB8;--line:#263440;--tot:#55B3D6;--pf:#FF8066;--hi:#1C2A35}}
+:root[data-theme="dark"]{--bg:#0E161D;--surf:#15202A;--ink:#E7EEF3;--mut:#9AABB8;--line:#263440;--tot:#55B3D6;--pf:#FF8066;--hi:#1C2A35}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Archivo,system-ui,sans-serif}
+main{max-width:980px;margin:0 auto;padding:32px 20px 48px}
+h1{font:600 clamp(30px,5vw,46px)/1.1 Newsreader,Georgia,serif;margin:0 0 10px;letter-spacing:-.01em}
+h2{font:600 22px/1.2 Newsreader,Georgia,serif;margin:0 0 4px}
+.lead{color:var(--mut);max-width:62ch;margin:0 0 28px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);margin-bottom:36px}
+.k{padding:16px 16px 16px 0}.k+.k{padding-left:16px;border-left:1px solid var(--line)}
+.k b{display:block;font:600 clamp(32px,6vw,52px)/1 Newsreader,Georgia,serif;margin:4px 0}
+.k span{font-size:14px;color:var(--mut)}.k .tag{font-weight:600;color:var(--ink)}
+.tot{color:var(--tot)}.pf{color:var(--pf)}
+.bar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;margin:14px 0 8px}
+.grp{display:flex;gap:6px;flex-wrap:wrap}
+button{font:500 14px Archivo,sans-serif;color:var(--ink);background:var(--surf);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer}
+button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:focus-visible,svg:focus-visible{outline:3px solid var(--tot);outline-offset:2px}
+.read{min-height:48px;font-size:15px;display:flex;gap:6px 20px;flex-wrap:wrap;align-items:baseline}
+.read strong{font-family:Newsreader,Georgia,serif;font-size:20px}
+.chart{background:var(--surf);border:1px solid var(--line);border-radius:8px;padding:8px}
+svg{display:block;width:100%;height:auto;touch-action:pan-y}
+.ax{fill:var(--mut);font:12px Archivo,sans-serif}
+section{margin-bottom:40px}
+.sw{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:6px}
+ol.ins{padding:0;margin:12px 0 0;list-style:none;max-width:70ch}
+ol.ins li{padding:12px 0;border-top:1px solid var(--line)}
+.note{background:var(--hi);border-radius:8px;padding:14px 16px;font-size:14px;color:var(--mut);max-width:70ch}
+footer{font-size:13px;color:var(--mut);border-top:1px solid var(--line);padding-top:16px;margin-top:32px}
+@media(max-width:600px){.kpis{grid-template-columns:1fr}.k+.k{border-left:0;border-top:1px solid var(--line);padding-left:0}}
+</style></head><body><main>
+<h1>Inadimplência de crédito no Brasil</h1>
+<p class="lead">Atrasos acima de 90 dias como parte do saldo da carteira de crédito do sistema financeiro, de mar/2011 a ago/2026. Duas séries do Banco Central: carteira total e pessoas físicas.</p>
+<div class="kpis" id="kpis"></div>
+<section>
+<h2>Evolução mensal</h2>
+<div class="bar"><div class="grp" id="per" role="group" aria-label="Período"></div>
+<div class="grp" id="ser" role="group" aria-label="Séries"></div></div>
+<div class="read" id="read" aria-live="polite"></div>
+<div class="chart"><svg id="ch" viewBox="0 0 900 340" role="img" aria-label="Gráfico de linhas da inadimplência mensal, carteira total e pessoas físicas" tabindex="0"></svg></div>
+</section>
+<section>
+<h2>Média por ano</h2>
+<p class="lead" style="margin-bottom:12px">2026 considera apenas os meses até agosto.</p>
+<div class="chart"><svg id="yr" viewBox="0 0 900 260" role="img" aria-label="Barras com a média anual de inadimplência"></svg></div>
+</section>
+<section>
+<h2>O que os dados mostram</h2>
+<ol class="ins">
+<li>Em ago/2026 as duas séries estão no ponto mais alto desde 2011: <b class="tot">5,04%</b> na carteira total e <b class="pf">6,03%</b> em pessoas físicas.</li>
+<li>Desde o mínimo de dez/2020 (2,16% no total e 2,89% em pessoas físicas), a alta é de 2,88 p.p. no total e 3,14 p.p. em pessoas físicas.</li>
+<li>Os picos anteriores ficaram bem abaixo: 4,11% no total em mai/2017 e 3,65% em mai/2023. Em pessoas físicas, 4,37% e 4,35%.</li>
+<li>Pessoas físicas ficam acima da carteira total em quase todo o período. A diferença hoje é de 0,99 p.p., contra média de 0,79 p.p. e mínimo de 0,05 p.p. em mai/2017.</li>
+<li>A média anual da carteira total passou de 2,31% em 2021 para 4,69% em 2026 (até agosto).</li>
+</ol>
+</section>
+<p class="note"><b>Como ler:</b> o indicador mostra o percentual do saldo de crédito com parcela atrasada há mais de 90 dias. Não é a proporção de pessoas inadimplentes. Este painel descreve o que aconteceu; ele não explica as causas da alta, que exigiriam cruzar outras séries, como juros e endividamento.</p>
+<footer>Fonte: Banco Central do Brasil, Sistema Gerenciador de Séries Temporais (SGS), séries 21082 e 21084. Dados limpos e consolidados, sem valores ausentes, 186 meses. Análise e painel: Cauã Venseguerra Nascimento.</footer>
+</main>
+<script>
+const D={"d":["2011-03","2011-04","2011-05","2011-06","2011-07","2011-08","2011-09","2011-10","2011-11","2011-12","2012-01","2012-02","2012-03","2012-04","2012-05","2012-06","2012-07","2012-08","2012-09","2012-10","2012-11","2012-12","2013-01","2013-02","2013-03","2013-04","2013-05","2013-06","2013-07","2013-08","2013-09","2013-10","2013-11","2013-12","2014-01","2014-02","2014-03","2014-04","2014-05","2014-06","2014-07","2014-08","2014-09","2014-10","2014-11","2014-12","2015-01","2015-02","2015-03","2015-04","2015-05","2015-06","2015-07","2015-08","2015-09","2015-10","2015-11","2015-12","2016-01","2016-02","2016-03","2016-04","2016-05","2016-06","2016-07","2016-08","2016-09","2016-10","2016-11","2016-12","2017-01","2017-02","2017-03","2017-04","2017-05","2017-06","2017-07","2017-08","2017-09","2017-10","2017-11","2017-12","2018-01","2018-02","2018-03","2018-04","2018-05","2018-06","2018-07","2018-08","2018-09","2018-10","2018-11","2018-12","2019-01","2019-02","2019-03","2019-04","2019-05","2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08","2020-09","2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07","2026-08"],"t":[3.17,3.24,3.37,3.32,3.42,3.45,3.46,3.58,3.58,3.54,3.66,3.71,3.67,3.76,3.76,3.71,3.72,3.75,3.72,3.76,3.67,3.55,3.55,3.53,3.46,3.48,3.48,3.26,3.22,3.14,3.15,3.07,2.98,2.87,2.86,2.88,2.91,2.95,3.02,2.93,2.98,3.01,2.94,2.99,2.88,2.76,2.85,2.89,2.85,2.99,3.06,2.96,3.07,3.16,3.16,3.28,3.42,3.42,3.52,3.55,3.58,3.71,3.79,3.57,3.61,3.69,3.74,3.9,3.86,3.75,3.79,3.82,3.91,4.0,4.11,3.8,3.75,3.76,3.66,3.69,3.6,3.29,3.48,3.49,3.35,3.38,3.37,3.11,3.08,3.1,3.11,3.11,3.02,2.93,3.01,2.96,3.04,3.07,3.1,2.99,3.1,3.1,3.11,3.09,3.06,2.99,3.06,3.1,3.24,3.36,3.31,2.95,2.82,2.7,2.47,2.4,2.27,2.16,2.19,2.28,2.18,2.24,2.39,2.32,2.36,2.37,2.34,2.33,2.36,2.35,2.51,2.57,2.66,2.72,2.79,2.73,2.84,2.9,2.92,3.04,3.07,3.07,3.24,3.36,3.35,3.54,3.65,3.61,3.63,3.61,3.54,3.56,3.53,3.29,3.38,3.38,3.33,3.37,3.43,3.29,3.3,3.33,3.34,3.3,3.27,3.08,3.34,3.41,3.44,3.67,3.72,3.75,3.96,4.14,4.09,4.18,4.24,4.2,4.44,4.64,4.52,4.64,4.75,4.58,4.88,5.04],"p":[4.62,4.67,4.82,4.79,4.9,4.97,5.03,5.17,5.22,5.22,5.36,5.4,5.36,5.41,5.51,5.43,5.42,5.4,5.41,5.34,5.21,5.1,5.04,5.0,4.95,4.86,4.9,4.62,4.57,4.46,4.45,4.26,4.16,4.09,4.05,4.03,4.08,4.13,4.19,4.01,4.08,4.07,3.97,4.01,3.87,3.7,3.78,3.85,3.71,3.79,3.89,3.7,3.81,3.92,3.99,4.12,4.24,4.27,4.34,4.35,4.3,4.35,4.37,4.1,4.15,4.17,4.23,4.23,4.15,4.0,4.04,4.06,4.06,4.09,4.16,3.91,4.01,3.99,3.93,3.93,3.83,3.58,3.78,3.76,3.7,3.68,3.64,3.52,3.56,3.55,3.47,3.43,3.35,3.3,3.39,3.35,3.41,3.41,3.46,3.4,3.49,3.53,3.6,3.58,3.59,3.56,3.63,3.72,4.0,4.13,4.04,3.67,3.52,3.35,3.19,3.11,3.02,2.89,2.93,2.97,2.92,2.95,3.01,2.91,2.94,2.96,3.01,2.99,3.01,3.05,3.26,3.38,3.45,3.54,3.65,3.57,3.71,3.78,3.8,3.89,3.92,3.94,4.11,4.16,4.11,4.26,4.35,4.25,4.22,4.12,4.0,3.97,3.88,3.75,3.76,3.76,3.71,3.75,3.82,3.71,3.78,3.82,3.83,3.79,3.75,3.63,3.89,3.96,4.03,4.25,4.36,4.41,4.66,4.92,4.89,4.99,5.12,5.12,5.38,5.56,5.39,5.51,5.63,5.42,5.8,6.03]};
+const M=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const f=v=>v.toFixed(2).replace('.',',')+'%',pp=v=>(v>0?'+':'')+v.toFixed(2).replace('.',',')+' p.p.';
+const lab=i=>{const[y,m]=D.d[i].split('-');return M[m-1]+'/'+y};
+const N=D.d.length,L=N-1,css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const $=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg';
+const mk=(h)=>{const e=document.createElementNS(NS,'g');e.innerHTML=h;return e};
+$('kpis').innerHTML=[['Carteira total','tot',D.t],['Pessoas físicas','pf',D.p]].map(([n,c,s])=>`<div class="k"><span class="tag">${n}, ${lab(L)}</span><b class="${c}">${f(s[L])}</b><span>${pp(s[L]-s[L-12])} em 12 meses</span></div>`).join('')+
+`<div class="k"><span class="tag">Distância entre as duas</span><b>${(D.p[L]-D.t[L]).toFixed(2).replace('.',',')} p.p.</b><span>pessoas físicas acima do total</span></div>`;
+let start=0,show={t:true,p:true},hov=L;
+const PER=[['Tudo',0],['10 anos',120],['5 anos',60],['2 anos',24]];
+function btns(){ $('per').innerHTML='';PER.forEach(([n,m],k)=>{const b=document.createElement('button');b.textContent=n;b.setAttribute('aria-pressed',start===(m?N-m:0));b.onclick=()=>{start=m?N-m:0;hov=L;btns();draw()};$('per').append(b)});
+ $('ser').innerHTML='';[['t','Carteira total','tot'],['p','Pessoas físicas','pf']].forEach(([k,n,c])=>{const b=document.createElement('button');b.innerHTML=`<span class="sw" style="background:var(--${c})"></span>${n}`;b.setAttribute('aria-pressed',show[k]);b.onclick=()=>{if(show[k]&&!show[k=='t'?'p':'t'])return;show[k]=!show[k];btns();draw()};$('ser').append(b)})}
+function draw(){const s=$('ch');s.innerHTML='';const W=900,H=340,l=44,r=14,t=14,b=28,n=N-start;
+ const keys=['t','p'].filter(k=>show[k]);let lo=1e9,hi=-1e9;keys.forEach(k=>D[k].slice(start).forEach(v=>{lo=Math.min(lo,v);hi=Math.max(hi,v)}));lo=Math.floor(lo);hi=Math.ceil(hi);
+ const X=i=>l+(i-start)/(n-1)*(W-l-r),Y=v=>t+(1-(v-lo)/(hi-lo))*(H-t-b);let g='';
+ for(let v=lo;v<=hi;v++)g+=`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css('--line')}"/><text class="ax" x="${l-8}" y="${Y(v)+4}" text-anchor="end">${v}%</text>`;
+ const step=n>150?24:n>70?12:6;for(let i=start;i<N;i++){const[y,m]=D.d[i].split('-');if(m==='01'&&((i-start)%1===0)&&(+y%(n>150?3:n>70?1:1)===0||n<=30))g+=`<text class="ax" x="${X(i)}" y="${H-8}" text-anchor="middle">${y}</text>`}
+ keys.forEach(k=>{g+=`<polyline fill="none" stroke="${css(k=='t'?'--tot':'--pf')}" stroke-width="2.5" stroke-linejoin="round" points="${D[k].slice(start).map((v,j)=>X(j+start).toFixed(1)+','+Y(v).toFixed(1)).join(' ')}"/>`});
+ if(hov<start)hov=L;g+=`<line x1="${X(hov)}" x2="${X(hov)}" y1="${t}" y2="${H-b}" stroke="${css('--mut')}" stroke-dasharray="3 3"/>`;
+ keys.forEach(k=>g+=`<circle cx="${X(hov)}" cy="${Y(D[k][hov])}" r="5" fill="${css(k=='t'?'--tot':'--pf')}" stroke="${css('--surf')}" stroke-width="2"/>`);
+ s.append(mk(g));
+ $('read').innerHTML=`<strong>${lab(hov)}</strong>`+keys.map(k=>`<span class="${k=='t'?'tot':'pf'}"><b>${k=='t'?'Total':'Pessoas físicas'}</b> ${f(D[k][hov])}</span>`).join('');
+ s.onpointermove=e=>{const bx=s.getBoundingClientRect(),x=(e.clientX-bx.left)/bx.width*W;hov=Math.max(start,Math.min(L,Math.round(start+(x-l)/(W-l-r)*(n-1))));draw()};
+ s.onkeydown=e=>{if(e.key==='ArrowLeft'){hov=Math.max(start,hov-1);draw();e.preventDefault()}if(e.key==='ArrowRight'){hov=Math.min(L,hov+1);draw();e.preventDefault()}}}
+function years(){const s=$('yr'),ys={};D.d.forEach((d,i)=>{const y=d.slice(0,4);(ys[y]=ys[y]||{t:[],p:[]});ys[y].t.push(D.t[i]);ys[y].p.push(D.p[i])});
+ const Y=Object.keys(ys),av=a=>a.reduce((x,y)=>x+y,0)/a.length,W=900,H=260,l=40,b=26,t=10,mx=7,bw=(W-l)/Y.length;let g='';
+ for(let v=0;v<=6;v+=2)g+=`<line x1="${l}" x2="${W}" y1="${t+(1-v/mx)*(H-t-b)}" y2="${t+(1-v/mx)*(H-t-b)}" stroke="${css('--line')}"/><text class="ax" x="${l-8}" y="${t+(1-v/mx)*(H-t-b)+4}" text-anchor="end">${v}%</text>`;
+ Y.forEach((y,i)=>{[['t','--tot'],['p','--pf']].forEach(([k,c],j)=>{const v=av(ys[y][k]),h=v/mx*(H-t-b),x=l+i*bw+bw*.12+j*bw*.38;g+=`<rect x="${x}" y="${H-b-h}" width="${bw*.36}" height="${h}" fill="${css(c)}"><title>${y}, ${k=='t'?'carteira total':'pessoas físicas'}: ${f(v)}</title></rect>`});g+=`<text class="ax" x="${l+i*bw+bw/2}" y="${H-8}" text-anchor="middle">${y==='2026'?'2026*':y.slice(2)==='11'?y:y.slice(2)}</text>`});s.append(mk(g))}
+btns();draw();years();
+matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{draw();$('yr').innerHTML='';years()});
+</script></body></html>
